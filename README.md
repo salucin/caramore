@@ -1,3 +1,6 @@
+
+# It goes without saying that I understand that this is the default readme.  Eventually, I'll go through and fix it.  :)
+
 # Welcome to Evennia!
 
 This is your game directory, set up to let you start with
