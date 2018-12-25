@@ -30,4 +30,22 @@ class Character(DefaultCharacter):
     at_post_puppet - Echoes "AccountName has entered the game" to the room.
 
     """
-    pass
+    def at_object_creation(self):
+        # I will have to fix these stats later.  We don't updating character defaults to reset rolled stats.
+        self.db.strength = 0
+        self.db.agility = 0
+        self.db.intelligence = 0
+        self.db.charisma = 0
+        self.db.constitution = 0
+        self.db.spirit = 0
+        # Xp and leveling based values.
+        self.db.chlevel = 1
+        self.db.xpmulti = .10
+        # The base amount of exp.  Xp progress is based around this value.
+        self.db.xpbase = 1000
+        self.db.exp = 0
+        self.ndb.xplvl = (self.db.xpbase * self.db.xpmulti) + self.db.xpbase
+
+    def get_stats(self):
+
+        return self.db.strength, self.db.agility, self.db.intelligence, self.db.charisma, self.db.constitution, self.db.spirit, self.db.chlevel, self.ndb.xplvl

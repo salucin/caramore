@@ -183,3 +183,19 @@ class Command(BaseCommand):
 #                 self.character = self.caller.get_puppet(self.session)
 #             else:
 #                 self.character = None
+
+class CmdScore(Command):
+    """
+    List stats, relevant data about the character.
+
+    Usage:
+        score
+    """
+    key = "score"
+    lock = "cmd:all()"
+    help_category = "General"
+
+    def func(self):
+        str, agi, int, cha, con, spi, level, xpnxt = self.caller.get_stats()
+        string = "| Strength: %s\n| Agility: %s\n| Intelligence: %s\n| Charisma: %s\n| Constitution: %s\n| Spirit: %s\n\n| Level: %s\n| Exp to Next Level: %s" % (str, agi, int, cha, con, spi, level, xpnxt)
+        self.caller.msg(string)
